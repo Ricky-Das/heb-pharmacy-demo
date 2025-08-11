@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: rx
+      POSTGRES_USER: rx
+      POSTGRES_PASSWORD: rx
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rx -d rx"]
+      interval: 5s
+      timeout: 5s
+      retries: 10

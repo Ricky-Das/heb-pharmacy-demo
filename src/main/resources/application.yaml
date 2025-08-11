@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/rx
+    username: rx
+    password: rx
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  pattern:
+    console: "%d{ISO8601} %-5level %logger{36} - %msg%n"
+
+app:
+  tooSoonPercent: 0.75
+  gcpPubSubEnabled: false
+  topicName: refill-events
